@@ -5,6 +5,7 @@ import SignIn from "./pages/signIn"
 import UserDashboard from "./pages/userDashboard"
 import JobListing from "./pages/jobListing"
 import JobDetails from "./pages/jobDetails"
+import Header from "./components/header"
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signUp" element={<SignUp />} />
