@@ -2,7 +2,7 @@
 
 function SignIn() {
   return (
-    <div>signIn</div>
+    <main>signIn</main>
   )
 }
 

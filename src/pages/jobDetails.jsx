@@ -2,7 +2,7 @@
 
 function JobDetails() {
   return (
-    <div>jobDetails</div>
+    <main>jobDetails</main>
   )
 }
 

@@ -2,7 +2,7 @@
 
 function UserDashboard() {
   return (
-    <div>dashboard</div>
+    <main>dashboard</main>
   )
 }
 
