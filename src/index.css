@@ -5,4 +5,41 @@
     --color-secondary: #657C72;
     --color-tertiary: #6B342D;
     --color-neutral: #F9FAFB;
+    --radius-full: 9999px;
+}
+.hamburger-line{
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.hamburger-line:nth-child(1){
+    top: 0;
+}
+.hamburger-line:nth-child(2){
+    top: 50%;
+    transform: translateY(-50%);
+}
+.hamburger-line:nth-child(3){
+    bottom: 0;
+}
+.hamburger.open .hamburger-line:nth-child(1){
+    top: 50%;
+    transform: rotate(45deg);
+}
+.hamburger.open .hamburger-line:nth-child(2){
+    opacity: 0;
+}
+.hamburger.open .hamburger-line:nth-child(3){
+    top: 50%;
+    transform: rotate(-45deg);
+}
+.hamburger.closed .hamburger-line:nth-child(1){
+    transform: none;
+}
+.hamburger.closed .hamburger-line:nth-child(3){
+    transform: none;
 }
