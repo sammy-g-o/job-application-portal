@@ -5,8 +5,15 @@
     --color-secondary: #657C72;
     --color-tertiary: #6B342D;
     --color-neutral: #F9FAFB;
+    --color-accent-soft: #CCE6D9;
+    --color-surface-primary: #F8F9FA;
+    --color-surface-elevated: #F3F4F5;     /* Cards, raised elements */
+    --font-headline: Manrope;
+    --font-body: inter;
+    --font-label: inter;
     --radius-full: 9999px;
 }
+
 .hamburger-line{
     position: absolute;
     left: 0;

@@ -18,7 +18,7 @@ function Header() {
               <span className="hamburger-line"></span>
             </div>
           </div>
-          <div className="flex items-center">The Curator</div>
+          <div className="flex items-center text-lg font-black text-primary font-headline">The Curator</div>
         </div>
         <div className="w-9 h-9 rounded-[100%] overflow-hidden flex items-center justify-center"></div>
       </div>
