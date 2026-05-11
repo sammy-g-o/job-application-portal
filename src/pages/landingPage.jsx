@@ -114,7 +114,7 @@ function LandingPage() {
               </div>
               <button className="w-fit h-fit" aria-label="bookmark job">
                 <svg width="14px" height="18px">
-                  <use href="/public/svg/bookmark.svg"></use>
+                  <use href="/svg/bookmark.svg"></use>
                 </svg>
               </button>
             </div>
@@ -134,6 +134,39 @@ function LandingPage() {
               </button>
             </div>
           </article>
+        </div>
+      </section>
+      <section className="highlights">
+        <div className="">
+          <Link className=""></Link>
+          <Link className=""></Link>
+          <Link className=""></Link>
+        </div>
+      </section>
+      <section className="landing-newsletter w-full">
+        <div className="w-full flex items-center justify-center bg-primary-dark rounded-[40px] p-8">
+          <form className="flex flex-col gap-6 items-center justify-center">
+            <div className="">
+              <h2 className="font-headline font-bold text-2xl text-white text-center">
+                The Weekly Brief
+              </h2>
+              <p className="text-sm text-[#80BEA6CC] text-center">
+                Hand-picked opportunities delivered to your inbox every Monday
+                morning.
+              </p>
+            </div>
+            <div className="w-full">
+              <label htmlFor="newsletter-email"></label>
+              <input
+                type="email"
+                className="rounded-2xl px-6 py-4.5 bg-[#FFFFFF1A] text-[#80BEA680] w-full"
+                placeholder="Email address"
+                id="newsletter-email"
+                name="newsletterEmail"
+              />
+            </div>
+            <input type="submit" value="Subscribe" className="rounded-2xl px-6 py-4.5 w-full bg-[#B0F0D6] text-primary-dark font-bold text-xs text-center"/>
+          </form>
         </div>
       </section>
     </main>
