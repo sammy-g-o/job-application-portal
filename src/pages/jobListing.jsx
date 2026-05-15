@@ -1,4 +1,8 @@
+// import { useState } from "react";
+
 function JobListing() {
+  // const [jobs, setJobs]= useState()
+
   function handleFilterButtonColor(e) {
     if (e.target.tagName !== "BUTTON") return;
     e.currentTarget.querySelectorAll("button").forEach((btn) => {
@@ -8,6 +12,7 @@ function JobListing() {
     e.target.classList.remove("bg-surface-elevated");
     e.target.classList.add("bg-primary", "text-white");
   }
+
   return (
     <main className="flex flex-col gap-8">
       <section className="w-full flex flex-col gap-2">

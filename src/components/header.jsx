@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import SideNav from "./sideNav";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(true);
-  function transformHamburger() {
+  const [isOpen, setIsOpen] = useState(false);
+  function handleOpenSideNav() {
     setIsOpen((prev) => !prev);
   }
   return (
@@ -14,7 +14,7 @@ function Header() {
           <div className="flex gap-12.5 items-center">
             <button
               className="flex items-center p-2 lg:hidden"
-              onClick={transformHamburger}
+              onClick={handleOpenSideNav}
               aria-label="Menu"
             >
               <div
@@ -36,7 +36,7 @@ function Header() {
           <div className="w-9 h-9 rounded-[100%] overflow-hidden flex items-center justify-center"></div>
         </div>
       </header>
-      <SideNav isOpen={isOpen} onOpenSideNav={transformHamburger} />
+      <SideNav isOpen={isOpen} onOpenSideNav={handleOpenSideNav} />
     </>
   );
 }
