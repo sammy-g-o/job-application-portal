@@ -86,10 +86,8 @@ function LandingPage() {
               to="#"
               key={category}
             >
-              <div className="">
-                {/* <svg>
-                  <use href={`/svg/${category}.svg` & null}></use>
-                </svg> */}
+              <div className="flex flex-col items-center gap-1.5">
+                <img src={`/svg/${category}.svg`} alt="" />
                 {category}
               </div>
             </Link>
@@ -104,7 +102,7 @@ function LandingPage() {
           <article className="recommended-job p-6 flex flex-col gap-[22.8px] border-[#BFC9C31A] rounded-4xl w-full">
             <div className="flex justify-between w-full">
               <div className="flex gap-4">
-                <img src="" alt="" />
+                <img src={null} alt="" />
                 <div className="">
                   <h3 className="font-bold font-headline text-[#191c1d]">
                     Lead UX Strategist
@@ -136,11 +134,31 @@ function LandingPage() {
           </article>
         </div>
       </section>
-      <section className="highlights">
-        <div className="">
-          <Link className=""></Link>
-          <Link className=""></Link>
-          <Link className=""></Link>
+      <section className="highlights w-full">
+        <div className="w-full flex flex-col gap-4">
+          <div className="w-full h-48 rounded-4xl p-6 relative flex overflow-hidden items-end bg-[url('/images/modern-office.png')] bg-size-[100%_100%]">
+            <div className="left-0 w-full h-full absolute top-0 bg-primary/85"></div>
+            <div className="z-10">
+              <h4 className="font-headline font-bold text-xl text-white">
+                Executive Search
+              </h4>
+              <span className="text-[#80BEA6] text-sm ">
+                Unlock exclusive leadership roles
+              </span>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="rounded-4xl p-6 bg-accent-soft flex-1 font-bold font-headline text-sm text-[#50685D]">
+              <img src="/svg/verified.svg" alt="" />
+              <p>
+                Vetted <br /> Companies
+              </p>
+            </div>
+            <div className="rounded-4xl p-6 h-auto flex-1 bg-[#E1E3E4] font-bold font-headline text-sm text-[#191C1D]">
+              <img src="/svg/fast.svg" alt="" />
+              <span>Fast-track Hiring</span>
+            </div>
+          </div>
         </div>
       </section>
       <section className="landing-newsletter w-full">
@@ -165,7 +183,11 @@ function LandingPage() {
                 name="newsletterEmail"
               />
             </div>
-            <input type="submit" value="Subscribe" className="rounded-2xl px-6 py-4.5 w-full bg-[#B0F0D6] text-primary-dark font-bold text-xs text-center"/>
+            <input
+              type="submit"
+              value="Subscribe"
+              className="rounded-2xl px-6 py-4.5 w-full bg-[#B0F0D6] text-primary-dark font-bold text-xs text-center"
+            />
           </form>
         </div>
       </section>
