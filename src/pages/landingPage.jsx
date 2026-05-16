@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Bookmark from "../components/bookmark";
 
 function LandingPage() {
   const jobCategories = ["design", "dev", "growth", "manufacturing"];
@@ -110,11 +111,7 @@ function LandingPage() {
                   <p className="text-sm text-text-regular">Stellar Systems</p>
                 </div>
               </div>
-              <button className="w-fit h-fit" aria-label="bookmark job">
-                <svg width="14px" height="18px">
-                  <use href="/svg/bookmark.svg"></use>
-                </svg>
-              </button>
+              <Bookmark color="#BFC9C3"/>
             </div>
             <div className="">
               <span className=""></span>

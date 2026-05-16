@@ -6,7 +6,7 @@ function JobListing() {
   const [activeFilter, setActiveFilter] = useState("All Jobs");
 
   return (
-    <main className="flex flex-col gap-8">
+    <main className="flex flex-col gap-8 h-[calc(100dvh-68px)]">
       <section className="w-full flex flex-col gap-2">
         <h1 className="font-extrabold font-headline text-4xl text-primary">
           Curated Openings
@@ -35,14 +35,14 @@ function JobListing() {
           ))}
         </div>
       </section>
-      <section className="job-feed w-full flex flex-col gap-6">
+      <section className="job-feed w-full flex flex-col gap-6 flex-1">
         <article className="bg-primary rounded-2xl p-6 w-full">
           <div className="flex flex-col gap-1">
             <div className="flex justify-between items-center">
               <div className="bg-primary-dark py-1 px-3 rounded-lg font-bold text-[10px] text-[#80BEA6]">
                 Hot Opportunity
               </div>
-              <Bookmark />
+              <Bookmark color="#80BEA6" />
             </div>
             <div className="">
               <h3 className="font-headline font-bold text-2xl text-white">
@@ -69,7 +69,7 @@ function JobListing() {
               </h3>
               <p className="text-sm text-text-regular">Aura Systems • Remote</p>
             </div>
-            <Bookmark />
+            <Bookmark color="#BFC9C3" />
           </div>
           <div className="flex justify-between">
             <div className="text-sm text-[#4C6359] font-semibold">
