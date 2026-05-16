@@ -9,7 +9,7 @@ function LandingPage() {
   }, []);
 
   return (
-    <main className="bg-surface-primary flex flex-col gap-12">
+    <main className="flex flex-col gap-12">
       <section className="landing-hero flex flex-col gap-6 pt-4 w-full">
         <span className="rounded-full py-1 px-3 bg-accent-soft w-fit font-semibold text-[12px] text-[#50685D]">
           ELEVATED CAREER SEARCH

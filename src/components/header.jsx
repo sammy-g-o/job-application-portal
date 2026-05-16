@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SideNav from "./sideNav";
+import Nav from "./nav";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,7 @@ function Header() {
               The Curator
             </Link>
           </div>
+          <Nav />
           <div className="w-9 h-9 rounded-[100%] overflow-hidden flex items-center justify-center"></div>
         </div>
       </header>
