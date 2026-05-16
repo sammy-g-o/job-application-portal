@@ -1,17 +1,9 @@
-// import { useState } from "react";
+import { useState } from "react";
+
+const FILTERS = ["All Jobs", "Full-time", "Remote", "Contract"];
 
 function JobListing() {
-  // const [jobs, setJobs]= useState()
-
-  function handleFilterButtonColor(e) {
-    if (e.target.tagName !== "BUTTON") return;
-    e.currentTarget.querySelectorAll("button").forEach((btn) => {
-      btn.classList.add("bg-surface-elevated");
-      btn.classList.remove("bg-primary", "text-white");
-    });
-    e.target.classList.remove("bg-surface-elevated");
-    e.target.classList.add("bg-primary", "text-white");
-  }
+  const [activeFilter, setActiveFilter] = useState("All Jobs");
 
   return (
     <main className="flex flex-col gap-8">
@@ -27,20 +19,22 @@ function JobListing() {
       <section className="w-full">
         <div
           className="w-full overflow-x-auto flex gap-4 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-transparent"
-          onClick={handleFilterButtonColor}
         >
-          <button className="flex-none py-2.5 px-5 rounded-full font-semibold text-sm text-text-regular bg-surface-elevated">
-            All Jobs
-          </button>
-          <button className="flex-none py-2.5 px-5 rounded-full font-semibold text-sm text-text-regular bg-surface-elevated">
-            Full-time
-          </button>
-          <button className="flex-none py-2.5 px-5 rounded-full font-semibold text-sm text-text-regular bg-surface-elevated">
-            Remote
-          </button>
-          <button className="flex-none py-2.5 px-5 rounded-full font-semibold text-sm text-text-regular bg-surface-elevated">
-            Contract
-          </button>
+          {FILTERS.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              aria-pressed={activeFilter === filter}
+              className={`flex-none py-2.5 px-5 rounded-full font-semibold text-sm ${
+                activeFilter === filter
+                  ? "bg-primary text-white"
+                  : "bg-surface-elevated text-text-regular"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
       </section>
     </main>
