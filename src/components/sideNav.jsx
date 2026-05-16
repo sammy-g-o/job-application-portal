@@ -1,4 +1,3 @@
-
 import { BiBookmark } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
@@ -10,40 +9,60 @@ const navLinkClass = ({ isActive }) =>
       ? "bg-[#D1FAE5] text-primary"
       : "text-text-regular hover:bg-[#D1FAE5]"
   }`;
-
-function SideNav({ isOpen, onOpenSideNav }) {
+function SideNav({ isOpen, onOpenSideNav, setIsOpen }) {
+  function handleCloseSideNav() {
+    setIsOpen(false);
+  }
   return (
     <section
       className={`side-nav ${isOpen ? "open" : ""} -translate-x-full transition-all ease-in-out h-dvh z-50 w-dvw fixed top-0 bg-transparent lg:hidden`}
     >
       <nav className="w-4/5 h-dvh rounded-r-2xl bg-[#F8FAFC] p-8 flex flex-col gap-8 z-50">
         <div className="flex justify-between w-full">
-          <div className="">The Curator</div>
+          <NavLink onClick={handleCloseSideNav} to="/" className="">
+            The Curator
+          </NavLink>
           <div className="" onClick={onOpenSideNav}>
             <FaX color="" />
           </div>
         </div>
         <ul className="flex flex-col gap-1">
           <li className="">
-            <NavLink to="/jobs" className={navLinkClass}>
+            <NavLink
+              onClick={handleCloseSideNav}
+              to="/jobs"
+              className={navLinkClass}
+            >
               <FaSearch />
               Find Jobs
             </NavLink>
           </li>
           <li className="">
-            <NavLink to="/companies" className={navLinkClass}>
+            <NavLink
+              onClick={handleCloseSideNav}
+              to="/companies"
+              className={navLinkClass}
+            >
               <FaSearch />
               Companies
             </NavLink>
           </li>
           <li className="">
-            <NavLink to="/saved" className={navLinkClass}>
+            <NavLink
+              onClick={handleCloseSideNav}
+              to="/saved"
+              className={navLinkClass}
+            >
               <BiBookmark />
               Saved
             </NavLink>
           </li>
           <li className="">
-            <NavLink to="/dashboard" className={navLinkClass}>
+            <NavLink
+              onClick={handleCloseSideNav}
+              to="/dashboard"
+              className={navLinkClass}
+            >
               <FaSearch />
               Dashboard
             </NavLink>

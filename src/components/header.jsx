@@ -38,7 +38,11 @@ function Header() {
           <div className="w-9 h-9 rounded-[100%] overflow-hidden flex items-center justify-center"></div>
         </div>
       </header>
-      <SideNav isOpen={isOpen} onOpenSideNav={handleOpenSideNav} />
+      <SideNav
+        isOpen={isOpen}
+        onOpenSideNav={handleOpenSideNav}
+        setIsOpen={setIsOpen}
+      />
     </>
   );
 }
