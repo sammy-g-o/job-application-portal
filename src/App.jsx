@@ -6,6 +6,7 @@ import UserDashboard from "./pages/userDashboard";
 import JobListing from "./pages/jobListing";
 import JobDetails from "./pages/jobDetails";
 import RootLayout from "./components/rootLayout";
+import AuthLayout from "./components/authLayout";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
           <Route path="/jobs" element={<JobListing />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
         </Route>
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-

@@ -19,7 +19,7 @@ function SignUp() {
   return (
     <main className="w-full pt-23">
       <section className="flex flex-col gap-8">
-        <div className="flex flex-col gap-10 p-8 b bg-white">
+        <div className="flex flex-col gap-10 p-8 b bg-white rounded-3xl">
           <div className="flex flex-col gap-2">
             <h1 className="text-primary-dark font-bold font-headline text-2xl">
               Begin your ascent
@@ -79,8 +79,7 @@ function SignUp() {
             </div>
             <button
               type="submit"
-              value=""
-              className="bg-primary p-5 rounded-lg font-headline font-bold text-white flex gap-4 justify-center items-center"
+              className="bg-primary p-5 rounded-xl font-headline font-bold text-white flex gap-4 justify-center items-center"
             >
               Continue to Profile
               <FaArrowRightLong fill="white" />
