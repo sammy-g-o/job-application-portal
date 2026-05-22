@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 
 function SignIn() {
   return (
-    <main className="pt-18">
+    <main className="pt-18 h-dvh">
       <section className="flex flex-col gap-10">
         <div className="flex flex-col gap-2">
-          <h1 className="font-headline font-extrabold text-3xl text-primary-dark">Welcome Back</h1>
-          <p className="font-medium text-text-regular">Continue your journey with the Emerald
-Executive network.</p>
+          <h1 className="font-headline font-extrabold text-3xl text-primary-dark">
+            Welcome Back
+          </h1>
+          <p className="font-medium text-text-regular">
+            Continue your journey with the Emerald Executive network.
+          </p>
         </div>
         <form action="" className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
@@ -38,8 +41,13 @@ Executive network.</p>
               className="py-4.5 px-5 rounded-xl bg-surface-elevated text-[#70797466]"
             />
           </div>
-          
-          <button type="submit" className="p-4 rounded-xl text-white font-semibold text-lg bg-linear-[99.95deg] from-[#003527] to-[#064E3B]">Sign in</button>
+
+          <button
+            type="submit"
+            className="p-4 rounded-xl text-white font-semibold text-lg bg-linear-[99.95deg] from-primary-dark to-primary"
+          >
+            Sign in
+          </button>
         </form>
         <div className=""></div>
         <div className="flex flex-col gap-4">
@@ -47,12 +55,14 @@ Executive network.</p>
             <GrGoogle /> Google
           </Link>
           <Link className="flex justify-center gap-3  items-center py-3.5 bg-white rounded-xl">
-            <LiaLinkedin/> LinkedIn
+            <LiaLinkedin /> LinkedIn
           </Link>
         </div>
         <p className="flex gap-1">
           New to Emerald Executive?
-          <Link className="text-primary-dark font-semibold">Create an account</Link>
+          <Link to="/sign-up"  className="text-primary-dark font-semibold">
+            Create an account
+          </Link>
         </p>
       </section>
     </main>
