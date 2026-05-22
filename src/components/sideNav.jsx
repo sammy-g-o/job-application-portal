@@ -1,6 +1,7 @@
 import { BiBookmark } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
+import { MdOutlineDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const navLinkClass = ({ isActive }) =>
@@ -63,7 +64,7 @@ function SideNav({ isOpen, onOpenSideNav, setIsOpen }) {
               to="/dashboard"
               className={navLinkClass}
             >
-              <FaSearch />
+              <MdOutlineDashboard />
               Dashboard
             </NavLink>
           </li>

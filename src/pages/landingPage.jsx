@@ -1,14 +1,20 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Bookmark from "../components/bookmark";
 
 function LandingPage() {
   const jobCategories = ["design", "dev", "growth", "manufacturing"];
-  useEffect(() => {
-    document.addEventListener("keydown", (e) => console.log(e.key));
-    return document.removeEventListener("keydown", (e) => console.log(e.key));
-  }, []);
+  const [searchJobs, setSearchJobs] = useState({
+    jobTitle: "",
+    location: "",
+  });
 
+  function handleJobSearchInput(e, inputName) {
+    setSearchJobs((jobName) => ({
+      ...jobName,
+      [`${inputName}`]: e.target.value,
+    }));
+  }
   return (
     <main className="flex flex-col gap-12">
       <section className="landing-hero flex flex-col gap-6 pt-4 w-full">
@@ -48,6 +54,10 @@ function LandingPage() {
               id="job-title"
               name="jobTitle"
               className="landing-search__inputs"
+              value={searchJobs.jobTitle}
+              onChange={(e) =>
+                handleJobSearchInput(e, e.target.attributes[5].value)
+              }
               placeholder="Job title or keyword"
             />
           </div>
@@ -58,6 +68,10 @@ function LandingPage() {
               id="location"
               name="location"
               className="landing-search__inputs"
+              value={searchJobs.location}
+              onChange={(e) =>
+                handleJobSearchInput(e, e.target.attributes[5].value)
+              }
               placeholder="location"
             />
           </div>
@@ -111,7 +125,7 @@ function LandingPage() {
                   <p className="text-sm text-text-regular">Stellar Systems</p>
                 </div>
               </div>
-              <Bookmark color="#BFC9C3"/>
+              <Bookmark color="#BFC9C3" />
             </div>
             <div className="">
               <span className=""></span>

@@ -5,27 +5,24 @@ import SignIn from "./pages/signIn";
 import UserDashboard from "./pages/userDashboard";
 import JobListing from "./pages/jobListing";
 import JobDetails from "./pages/jobDetails";
-import Header from "./components/header";
-import Footer from "./components/footer";
+import RootLayout from "./components/rootLayout";
 
 function App() {
-  
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<RootLayout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/signIn" element={<SignIn />} />
           <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/jobs" element={<JobListing />} />
-          <Route path="/jobs/:details" element={<JobDetails />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+          <Route path="/jobs/:id" element={<JobDetails />} />
+        </Route>
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
