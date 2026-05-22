@@ -10,12 +10,6 @@ function SignUp() {
   const handleSignUpDetailsInput = function (e, elName) {
     setSignUpDetails((prev) => ({ ...prev, [elName]: e.target.value }));
   };
-  useEffect(
-    function () {
-      console.log(signUpDetails.fullName);
-    },
-    [signUpDetails],
-  );
   return (
     <main className="w-full pt-23">
       <section className="flex flex-col gap-8">
