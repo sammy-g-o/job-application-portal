@@ -4,7 +4,7 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 function Bookmark({color}) {
   const [bookmarked, setBookmarked] = useState(false);
   return (
-    <div className="" onClick={() => setBookmarked((prev) => !prev)}>
+    <div className="cursor-pointer" onClick={() => setBookmarked((prev) => !prev)}>
       {bookmarked ? (
         <FaBookmark height={18} width={14} fill={color} />
       ) : (
