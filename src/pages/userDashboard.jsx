@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Application from "../components/application";
 
 function UserDashboard() {
   return (
@@ -39,22 +40,7 @@ function UserDashboard() {
           <Link className="text-primary font-semibold text-sm">View all</Link>
         </div>
         <ul className="flex gap-3 flex-col">
-          <li className="p-5 gap-4 rounded-xl flex">
-            <div className="">
-              <img src={null} alt="" />
-            </div>
-            <div className="">
-              <h3 className="font-bold font-headline text-[#191C1D]">
-                Senior UX Architect
-              </h3>
-              <p className="text-sm text-text-regular">Design Studio Co.</p>
-            </div>
-            <div className="">
-              <span className="px-2 py-1 bg-[#D1FAE5] rounded-md uppercase text-[10px]">
-                Interviewing
-              </span>
-            </div>
-          </li>
+          <Application />
         </ul>
       </section>
       <section className="flex flex-col gap-4">
@@ -73,7 +59,7 @@ function UserDashboard() {
         </div>
       </section>
       <section className="w-full h-64 p-8 relative rounded-2xl overflow-hidden bg-[url('/images/professional-woman.png')] bg-size-[100%_100%]">
-       <div className="w-full bg-[linear-gradient(0deg,rgba(0,53,39,0.9)_0%,rgba(0,53,39,0.2)_50%,rgba(0,53,39,0)_100%)] h-64 absolute top-0 left-0"></div>
+        <div className="w-full bg-[linear-gradient(0deg,rgba(0,53,39,0.9)_0%,rgba(0,53,39,0.2)_50%,rgba(0,53,39,0)_100%)] h-64 absolute top-0 left-0"></div>
         <div className="flex flex-col gap-2">
           <div className="px-3 py-1 bg-[#4F1F19] w-fit rounded-full text-white uppercase text-[10px]">
             expert insight

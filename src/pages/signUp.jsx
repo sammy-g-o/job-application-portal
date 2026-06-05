@@ -1,14 +1,60 @@
 import { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateSignUp({ email, password }) {
+  const errors = {};
+
+  if (!email.trim()) {
+    errors.email = "Email is required.";
+  } else if (!EMAIL_REGEX.test(email)) {
+    errors.email = "Enter a valid email address.";
+  }
+
+  if (!password) {
+    errors.password = "Password is required.";
+  } else if (password.length < 8) {
+    errors.password = "Password must be at least 8 characters.";
+  } else if (!/[A-Z]/.test(password)) {
+    errors.password = "Password must include an uppercase letter.";
+  } else if (!/[a-z]/.test(password)) {
+    errors.password = "Password must include a lowercase letter.";
+  } else if (!/[0-9]/.test(password)) {
+    errors.password = "Password must include a number.";
+  } else if (!/[^A-Za-z0-9]/.test(password)) {
+    errors.password = "Password must include a special character.";
+  }
+
+  return errors;
+}
+
 function SignUp() {
   const [signUpDetails, setSignUpDetails] = useState({
     fullName: "",
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({});
+
   const handleSignUpDetailsInput = function (e, elName) {
     setSignUpDetails((prev) => ({ ...prev, [elName]: e.target.value }));
+    if (errors[elName]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[elName];
+        return next;
+      });
+    }
+  };
+
+  const handleSubmit = function (e) {
+    e.preventDefault();
+    const nextErrors = validateSignUp(signUpDetails);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length === 0) {
+      // proceed to next step
+    }
   };
   return (
     <main className="w-full pt-23">
@@ -22,7 +68,7 @@ function SignUp() {
               Step 1: Account Essentials
             </span>
           </div>
-          <form action="" className="flex flex-col gap-6">
+          <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-6">
             <div className="flex flex-col gap-2 ">
               <label
                 htmlFor="fullName"
@@ -34,7 +80,7 @@ function SignUp() {
                 type="text"
                 className="px-4 py-4 5 rounded-lg bg-surface-elevated text-[16px] text-[#94A3B8]"
                 id="fullName"
-                name="full name"
+                name="fullName"
                 value={signUpDetails.fullName}
                 onChange={(e) => handleSignUpDetailsInput(e, "fullName")}
               />
@@ -47,13 +93,21 @@ function SignUp() {
                 Executive Email
               </label>
               <input
-                type="text"
+                type="email"
                 className="px-4 py-4 5 rounded-lg bg-surface-elevated text-[16px] text-[#94A3B8]"
                 id="email"
                 name="email"
+                autoComplete="email"
                 value={signUpDetails.email}
                 onChange={(e) => handleSignUpDetailsInput(e, "email")}
+                aria-invalid={errors.email ? "true" : "false"}
+                aria-describedby={errors.email ? "email-error" : undefined}
               />
+              {errors.email && (
+                <span id="email-error" className="text-sm text-tertiary">
+                  {errors.email}
+                </span>
+              )}
             </div>
             <div className="flex flex-col gap-2 ">
               <label
@@ -67,9 +121,17 @@ function SignUp() {
                 className="px-4 py-4 5 rounded-lg bg-surface-elevated text-[16px] text-[#94A3B8]"
                 id="password"
                 name="password"
+                autoComplete="new-password"
                 value={signUpDetails.password}
                 onChange={(e) => handleSignUpDetailsInput(e, "password")}
+                aria-invalid={errors.password ? "true" : "false"}
+                aria-describedby={errors.password ? "password-error" : undefined}
               />
+              {errors.password && (
+                <span id="password-error" className="text-sm text-tertiary">
+                  {errors.password}
+                </span>
+              )}
             </div>
             <button
               type="submit"
