@@ -21,10 +21,12 @@ body {
     font-family: Inter;
 }
 
-main {
-    padding-inline: 1.5rem;
-    width: 100%;
-    background-color: var(--color-surface-primary);
+@layer base {
+    main {
+        padding-inline: 1.5rem;
+        width: 100%;
+        background-color: var(--color-surface-primary);
+    }
 }
 
 .hamburger-line {
@@ -99,3 +101,4 @@ main {
     background-color: rgba(0, 0, 0, 0.7);
     display: block
 }
+
