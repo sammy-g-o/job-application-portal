@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Bookmark from "../components/bookmark";
 
-function LandingPage() {
+function LandingPage({ jobs }) {
   const jobCategories = ["design", "dev", "growth", "manufacturing"];
   const [searchJobs, setSearchJobs] = useState({
     jobTitle: "",
@@ -15,6 +15,7 @@ function LandingPage() {
       [`${inputName}`]: e.target.value,
     }));
   }
+  console.log(jobs);
   return (
     <main className="flex flex-col gap-12">
       <section className="landing-hero flex flex-col gap-6 pt-4 w-full">
@@ -114,35 +115,45 @@ function LandingPage() {
           <h2 className="font-bold text-xl font-headline text-[#191c1d]">
             Recommended for You
           </h2>
-          <article className="recommended-job p-6 flex flex-col gap-[22.8px] border-[#BFC9C31A] rounded-4xl w-full">
-            <div className="flex justify-between w-full">
-              <div className="flex gap-4">
-                <img src={null} alt="" />
-                <div className="">
-                  <h3 className="font-bold font-headline text-[#191c1d]">
-                    Lead UX Strategist
-                  </h3>
-                  <p className="text-sm text-text-regular">Stellar Systems</p>
-                </div>
-              </div>
-              <Bookmark color="#BFC9C3" />
-            </div>
-            <div className="">
-              <span className=""></span>
-            </div>
-            <div className="">
-              <p className="text-sm text-text-regular">
-                Looking for a design leader to orchestrate high-fidelity user
-                journeys for our next-gen fintech platform...
-              </p>
-            </div>
-            <div className="w-full pt-[25.2px] border-t-[#EDEEEF] flex justify-between">
-              <span>Posted 2h ago</span>
-              <button className="bg-primary-dark py-2 px-6 rounded-xl font-bold text-sm text-white">
-                Apply Now
-              </button>
-            </div>
-          </article>
+          <ul className="flex flex-col gap-3">
+            {jobs.map((job) => (
+              <li>
+                <article
+                  className="recommended-job p-6 flex flex-col gap-[22.8px] border-[#BFC9C31A] rounded-4xl w-full"
+                  key={job.jobId}
+                >
+                  <div className="flex justify-between w-full">
+                    <div className="flex gap-4">
+                      <img src={null} alt="" />
+                      <div className="">
+                        <h3 className="font-bold font-headline text-[#191c1d]">
+                          {job.jobTitle}
+                        </h3>
+                        <p className="text-sm text-text-regular">
+                          {job.companyName}
+                        </p>
+                      </div>
+                    </div>
+                    <Bookmark color="#BFC9C3" />
+                  </div>
+                  <div className="">
+                    <span className=""></span>
+                  </div>
+                  <div className="">
+                    <p className="text-sm text-text-regular">
+                      {job.description}
+                    </p>
+                  </div>
+                  <div className="w-full pt-[25.2px] border-t-[#EDEEEF] flex justify-between">
+                    <span>Posted 2h ago</span>
+                    <button className="bg-primary-dark py-2 px-6 rounded-xl font-bold text-sm text-white">
+                      Apply Now
+                    </button>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
       <section className="highlights w-full">

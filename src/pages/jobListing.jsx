@@ -3,7 +3,7 @@ import Bookmark from "../components/bookmark";
 import Job from "../components/job";
 
 const FILTERS = ["All Jobs", "Full-time", "Remote", "Contract"];
-function JobListing() {
+function JobListing({ Jobs }) {
   const [activeFilter, setActiveFilter] = useState("All Jobs");
 
   return (
@@ -63,7 +63,11 @@ function JobListing() {
               </div>
             </div>
           </article>
-          <Job />
+          <ul className="flex flex-col gap-2.5">
+            {Jobs.map((job) => (
+              <Job key={job.jobId} job={job} />
+            ))}
+          </ul>
         </section>
       </section>
     </main>

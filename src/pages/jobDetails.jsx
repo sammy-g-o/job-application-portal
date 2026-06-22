@@ -1,4 +1,9 @@
+import { useParams } from "react-router-dom";
+
+
 function JobDetails() {
+  const { id } = useParams();
+  
   return (
     <main>
       <section className="flex flex-col gap-6">
