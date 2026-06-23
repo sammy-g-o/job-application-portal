@@ -1,19 +1,34 @@
 import { useParams } from "react-router-dom";
-
+import { Ajax } from "../helper";
+import { useEffect, useState } from "react";
 
 function JobDetails() {
   const { id } = useParams();
-  
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    async function loadJobs() {
+      try {
+        const data = await Ajax("/api/jobs");
+        setJobs(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    loadJobs();
+  }, []);
+  if (!jobs.length) return <p>loading...</p>;
+  const job = jobs.find((job) => job.jobId === id);
+
   return (
     <main>
       <section className="flex flex-col gap-6">
         <div className="flex justify-between"></div>
         <div className="flex flex-col gap-2">
           <h1 className="font-headline font-extrabold text-3xl text-primary">
-            Principal Product Designer
+            {job.jobTitle}
           </h1>
           <span className="text-lg text-text-regular">
-            Stripe • San Francisco, CA
+            {job.companyName} • {job.location}
           </span>
         </div>
         <div className="flex gap-2">

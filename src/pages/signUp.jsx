@@ -61,6 +61,11 @@ function SignUp() {
       <section className="flex flex-col gap-8">
         <div className="flex flex-col gap-10 p-8 b bg-white rounded-3xl">
           <div className="flex flex-col gap-2">
+            <div className="flex gap-3 justify-center">
+              <div className="rounded-full bg-primary h-1 w-21"></div>
+              <div className="rounded-full bg-[#E7E8E9] h-1 w-21"></div>
+              <div className="rounded-full bg-[#E7E8E9] h-1 w-21"></div>
+            </div>
             <h1 className="text-primary-dark font-bold font-headline text-2xl">
               Begin your ascent
             </h1>
@@ -68,7 +73,11 @@ function SignUp() {
               Step 1: Account Essentials
             </span>
           </div>
-          <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <form
+            noValidate
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-6"
+          >
             <div className="flex flex-col gap-2 ">
               <label
                 htmlFor="fullName"
@@ -80,7 +89,7 @@ function SignUp() {
                 type="text"
                 className="px-4 py-4 5 rounded-lg bg-surface-elevated text-[16px] text-[#94A3B8]"
                 id="fullName"
-                name="fullName"
+                name="full name"
                 value={signUpDetails.fullName}
                 onChange={(e) => handleSignUpDetailsInput(e, "fullName")}
               />
@@ -125,7 +134,9 @@ function SignUp() {
                 value={signUpDetails.password}
                 onChange={(e) => handleSignUpDetailsInput(e, "password")}
                 aria-invalid={errors.password ? "true" : "false"}
-                aria-describedby={errors.password ? "password-error" : undefined}
+                aria-describedby={
+                  errors.password ? "password-error" : undefined
+                }
               />
               {errors.password && (
                 <span id="password-error" className="text-sm text-tertiary">

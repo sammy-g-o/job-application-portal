@@ -117,7 +117,7 @@ function LandingPage({ jobs }) {
           </h2>
           <ul className="flex flex-col gap-3">
             {jobs.map((job) => (
-              <li>
+              <li key={job.jobId}>
                 <article
                   className="recommended-job p-6 flex flex-col gap-[22.8px] border-[#BFC9C31A] rounded-4xl w-full"
                   key={job.jobId}

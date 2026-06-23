@@ -1,4 +1,4 @@
-import { BrowserRouter, createContext, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/landingPage";
 import SignUp from "./pages/signUp";
 import SignIn from "./pages/signIn";
@@ -7,14 +7,14 @@ import JobListing from "./pages/jobListing";
 import JobDetails from "./pages/jobDetails";
 import RootLayout from "./components/rootLayout";
 import AuthLayout from "./components/authLayout";
-import * as model from "./model";
+import { Ajax } from "./helper";
 import { useEffect, useState } from "react";
 
 function App() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     async function loadJobs() {
-      const data = await model.getJobs();
+      const data = await Ajax("/api/jobs");
       setJobs(data);
     }
     loadJobs();
@@ -25,7 +25,7 @@ function App() {
         <Route element={<RootLayout />}>
           <Route path="/" element={<LandingPage jobs={jobs} />} />
           <Route path="/dashboard" element={<UserDashboard />} />
-          <Route path="/jobs" element={<JobListing Jobs={jobs}/>} />
+          <Route path="/jobs" element={<JobListing Jobs={jobs} />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
         </Route>
         <Route element={<AuthLayout />}>
