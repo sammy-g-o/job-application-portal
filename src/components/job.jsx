@@ -1,6 +1,7 @@
 import React from "react";
 import Bookmark from "./bookmark";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../helper";
 
 function timeAgo(date) {
   const diff = Date.now() - new Date(date).getTime();
@@ -36,12 +37,12 @@ function timeAgo(date) {
   return `${n} Year${n === 1 ? "" : "s"} Ago`;
 }
 
-function Job({ job, bookmarks, setBookmarks}) {
+function Job({ job, bookmarks, setBookmarks }) {
   // Example: Currency formatting
-  const formatter = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: job.currency,
-  });
+  // const formatter = new Intl.NumberFormat("en-NG", {
+  //   style: "currency",
+  //   currency: job.currency,
+  // });
   return (
     <li>
       <article className="p-6 flex flex-col gap-6 rounded-2xl w-full bg-white shadow-card">
@@ -57,11 +58,16 @@ function Job({ job, bookmarks, setBookmarks}) {
               {job.companyName} • {job.location}{" "}
             </p>
           </div>
-          <Bookmark color="#BFC9C3" id={job.jobId} bookmarks={bookmarks} setBookmarks={setBookmarks}/>
+          <Bookmark
+            color="#BFC9C3"
+            id={job.jobId}
+            bookmarks={bookmarks}
+            setBookmarks={setBookmarks}
+          />
         </div>
         <div className="flex justify-between">
           <div className="text-sm text-[#4C6359] font-semibold">
-            {formatter.format(job.salary)}
+            {formatCurrency(job.currency, job.salary)}
             {/* {job.salary < 1_000_000
               ? `${job.salary / 1000}k`
               : `${(job.salary / 1_000_000).toFixed(1)}m`} */}

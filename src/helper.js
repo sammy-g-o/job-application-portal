@@ -16,3 +16,10 @@ export const storeInLocalStorage = function (name, data) {
 export const getFromLocalStorage = function (name) {
   return JSON.parse(localStorage.getItem(`${name}`));
 };
+
+export const formatCurrency = function (currency, amount) {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: currency,
+  }).format(amount);
+};
