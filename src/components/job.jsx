@@ -37,7 +37,7 @@ function timeAgo(date) {
   return `${n} Year${n === 1 ? "" : "s"} Ago`;
 }
 
-function Job({ job, bookmarks, setBookmarks }) {
+function Job({ job }) {
   // Example: Currency formatting
   // const formatter = new Intl.NumberFormat("en-NG", {
   //   style: "currency",
@@ -58,12 +58,7 @@ function Job({ job, bookmarks, setBookmarks }) {
               {job.companyName} • {job.location}{" "}
             </p>
           </div>
-          <Bookmark
-            color="#BFC9C3"
-            id={job.jobId}
-            bookmarks={bookmarks}
-            setBookmarks={setBookmarks}
-          />
+          <Bookmark color="#BFC9C3" id={job.jobId} />
         </div>
         <div className="flex justify-between">
           <div className="text-sm text-[#4C6359] font-semibold">

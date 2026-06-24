@@ -134,7 +134,7 @@ function LandingPage({ jobs }) {
                         </p>
                       </div>
                     </div>
-                    <Bookmark color="#BFC9C3" />
+                    <Bookmark color="#BFC9C3" id={job.jobId} />
                   </div>
                   <div className="">
                     <span className=""></span>

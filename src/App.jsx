@@ -7,12 +7,27 @@ import JobListing from "./pages/jobListing";
 import JobDetails from "./pages/jobDetails";
 import RootLayout from "./components/rootLayout";
 import AuthLayout from "./components/authLayout";
-import { Ajax } from "./helper";
-import { useEffect, useState } from "react";
+import { Ajax, getFromLocalStorage, storeInLocalStorage } from "./helper";
+import { useEffect, useMemo, useState } from "react";
 import Bookmarked from "./pages/bookmarked";
+import { BookmarksContext } from "./contexts";
 
 function App() {
   const [jobs, setJobs] = useState([]);
+
+  const [bookmarks, setBookmarks] = useState(
+    () => getFromLocalStorage("bookmarks") ?? [],
+  );
+
+  useEffect(() => {
+    storeInLocalStorage("bookmarks", bookmarks);
+  }, [bookmarks]);
+
+  const bookmarksValue = useMemo(
+    () => ({ bookmarks, setBookmarks }),
+    [bookmarks],
+  );
+
   useEffect(() => {
     async function loadJobs() {
       const data = await Ajax("/api/jobs");
@@ -22,19 +37,21 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<RootLayout />}>
-          <Route path="/" element={<LandingPage jobs={jobs} />} />
-          <Route path="/dashboard" element={<UserDashboard />} />
-          <Route path="/saved" element={<Bookmarked />} />
-          <Route path="/jobs" element={<JobListing Jobs={jobs} />} />
-          <Route path="/jobs/:id" element={<JobDetails />} />
-        </Route>
-        <Route element={<AuthLayout />}>
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-        </Route>
-      </Routes>
+      <BookmarksContext.Provider value={bookmarksValue}>
+        <Routes>
+          <Route element={<RootLayout />}>
+            <Route path="/" element={<LandingPage jobs={jobs} />} />
+            <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/saved" element={<Bookmarked />} />
+            <Route path="/jobs" element={<JobListing Jobs={jobs} />} />
+            <Route path="/jobs/:id" element={<JobDetails />} />
+          </Route>
+          <Route element={<AuthLayout />}>
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Route>
+        </Routes>
+      </BookmarksContext.Provider>
     </BrowserRouter>
   );
 }

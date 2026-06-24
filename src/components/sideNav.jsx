@@ -31,6 +31,16 @@ function SideNav({ isOpen, onOpenSideNav, setIsOpen }) {
           <li className="">
             <NavLink
               onClick={handleCloseSideNav}
+              to="/dashboard"
+              className={navLinkClass}
+            >
+              <MdOutlineDashboard />
+              Dashboard
+            </NavLink>
+          </li>
+          <li className="">
+            <NavLink
+              onClick={handleCloseSideNav}
               to="/jobs"
               className={navLinkClass}
             >
@@ -56,16 +66,6 @@ function SideNav({ isOpen, onOpenSideNav, setIsOpen }) {
             >
               <BiBookmark />
               Saved
-            </NavLink>
-          </li>
-          <li className="">
-            <NavLink
-              onClick={handleCloseSideNav}
-              to="/dashboard"
-              className={navLinkClass}
-            >
-              <MdOutlineDashboard />
-              Dashboard
             </NavLink>
           </li>
         </ul>
