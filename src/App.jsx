@@ -15,17 +15,17 @@ import { BookmarksContext } from "./contexts";
 function App() {
   const [jobs, setJobs] = useState([]);
 
-  const [bookmarks, setBookmarks] = useState(
+  const [bookmarkIds, setBookmarkIds] = useState(
     () => getFromLocalStorage("bookmarks") ?? [],
   );
 
   useEffect(() => {
-    storeInLocalStorage("bookmarks", bookmarks);
-  }, [bookmarks]);
+    storeInLocalStorage("bookmarks", bookmarkIds);
+  }, [bookmarkIds]);
 
   const bookmarksValue = useMemo(
-    () => ({ bookmarks, setBookmarks }),
-    [bookmarks],
+    () => ({ bookmarkIds, setBookmarkIds }),
+    [bookmarkIds],
   );
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function App() {
           <Route element={<RootLayout />}>
             <Route path="/" element={<LandingPage jobs={jobs} />} />
             <Route path="/dashboard" element={<UserDashboard />} />
-            <Route path="/saved" element={<Bookmarked />} />
+            <Route path="/saved" element={<Bookmarked jobs={jobs}/>} />
             <Route path="/jobs" element={<JobListing Jobs={jobs} />} />
             <Route path="/jobs/:id" element={<JobDetails />} />
           </Route>

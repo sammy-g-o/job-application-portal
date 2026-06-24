@@ -2,14 +2,14 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 import { useBookmarks } from "../contexts";
 
 function Bookmark({ color, id }) {
-  const { bookmarks, setBookmarks } = useBookmarks();
-  const bookmarked = bookmarks.includes(id);
+  const { bookmarkIds, setBookmarkIds } = useBookmarks();
+  const bookmarked = bookmarkIds.includes(id);
 
   const addBookmark = function () {
-    setBookmarks([...bookmarks, id]);
+    setBookmarkIds([...bookmarkIds, id]);
   };
   const removeBookmark = function () {
-    setBookmarks(bookmarks.filter((bookmark) => bookmark !== id));
+    setBookmarkIds(bookmarkIds.filter((bookmark) => bookmark !== id));
   };
   return (
     <div

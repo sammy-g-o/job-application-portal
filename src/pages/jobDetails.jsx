@@ -4,13 +4,12 @@ import { useEffect, useState } from "react";
 
 function JobDetails() {
   const { id } = useParams();
-  const [job, setJob] = useState([]);
+  const [job, setJob] = useState({});
   useEffect(() => {
     async function loadJobs() {
       try {
         const data = await Ajax(`/api/jobs/${id}`);
         setJob(data);
-        console.log(data)
       } catch (error) {
         console.error(error);
       }
@@ -42,7 +41,7 @@ function JobDetails() {
       </section>
       <section className="flex flex-col gap-4">
         <h2 className="font-headline font-bold text- text-primary">The Role</h2>
-        <p className="text-text-regular"></p>
+        <p className="text-text-regular">{job.description}</p>
       </section>
       <section className="flex flex-col gap-6">
         <h2 className="font-headline font-bold text-xl text-primary">
