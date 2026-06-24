@@ -36,7 +36,12 @@ function timeAgo(date) {
   return `${n} Year${n === 1 ? "" : "s"} Ago`;
 }
 
-function Job({ job }) {
+function Job({ job, bookmarks, setBookmarks}) {
+  // Example: Currency formatting
+  const formatter = new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: job.currency,
+  });
   return (
     <li>
       <article className="p-6 flex flex-col gap-6 rounded-2xl w-full bg-white shadow-card">
@@ -52,13 +57,14 @@ function Job({ job }) {
               {job.companyName} • {job.location}{" "}
             </p>
           </div>
-          <Bookmark color="#BFC9C3" />
+          <Bookmark color="#BFC9C3" id={job.jobId} bookmarks={bookmarks} setBookmarks={setBookmarks}/>
         </div>
         <div className="flex justify-between">
           <div className="text-sm text-[#4C6359] font-semibold">
-            {job.salary < 1_000_000
+            {formatter.format(job.salary)}
+            {/* {job.salary < 1_000_000
               ? `${job.salary / 1000}k`
-              : `${(job.salary / 1_000_000).toFixed(1)}m`}
+              : `${(job.salary / 1_000_000).toFixed(1)}m`} */}
           </div>
           <div className="font-bold text-[10px] text-[#707974] bg-[#f3f4f5] px-2 py-1">
             {timeAgo(job.uploadedDate)}

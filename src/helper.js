@@ -9,3 +9,10 @@ export async function Ajax(url) {
     throw new Error(error);
   }
 }
+
+export const storeInLocalStorage = function (name, data) {
+  localStorage.setItem(`${name}`, JSON.stringify(data));
+};
+export const getFromLocalStorage = function (name) {
+  return JSON.parse(localStorage.getItem(`${name}`));
+};

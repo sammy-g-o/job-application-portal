@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Bookmark from "../components/bookmark";
 import Job from "../components/job";
+import { getFromLocalStorage, storeInLocalStorage } from "../helper";
 
 const FILTERS = ["All Jobs", "Full-time", "Remote", "Contract"];
 function JobListing({ Jobs }) {
   const [activeFilter, setActiveFilter] = useState("All Jobs");
 
+  const [bookmarks, setBookmarks] = useState(() => getFromLocalStorage("bookmarks") ?? []);
+  useEffect(
+    function () {
+      storeInLocalStorage("bookmarks", bookmarks);
+    },
+    [bookmarks],
+  );
+
   return (
-    <main className="h-[calc(100dvh-68px)] lg:flex lg:flex-row lg:gap-6 lg:px-16 lg:py-12">
+    <main className="lg:flex lg:flex-row lg:gap-6 lg:px-16 lg:py-12">
       <aside className="hidden lg:flex flex-col flex-1"></aside>
       <section className="flex flex-col gap-8 w-full lg:flex-3">
         <section className="w-full flex flex-col gap-2">
@@ -65,7 +74,12 @@ function JobListing({ Jobs }) {
           </article>
           <ul className="flex flex-col gap-2.5">
             {Jobs.map((job) => (
-              <Job key={job.jobId} job={job} />
+              <Job
+                key={job.jobId}
+                job={job}
+                bookmarks={bookmarks}
+                setBookmarks={setBookmarks}
+              />
             ))}
           </ul>
         </section>

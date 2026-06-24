@@ -9,6 +9,7 @@ import RootLayout from "./components/rootLayout";
 import AuthLayout from "./components/authLayout";
 import { Ajax } from "./helper";
 import { useEffect, useState } from "react";
+import Bookmarked from "./pages/bookmarked";
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -25,6 +26,7 @@ function App() {
         <Route element={<RootLayout />}>
           <Route path="/" element={<LandingPage jobs={jobs} />} />
           <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/saved" element={<Bookmarked />} />
           <Route path="/jobs" element={<JobListing Jobs={jobs} />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
         </Route>

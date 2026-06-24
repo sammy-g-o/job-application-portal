@@ -4,20 +4,19 @@ import { useEffect, useState } from "react";
 
 function JobDetails() {
   const { id } = useParams();
-  const [jobs, setJobs] = useState([]);
+  const [job, setJob] = useState([]);
   useEffect(() => {
     async function loadJobs() {
       try {
-        const data = await Ajax("/api/jobs");
-        setJobs(data);
+        const data = await Ajax(`/api/jobs/${id}`);
+        setJob(data);
+        console.log(data)
       } catch (error) {
         console.error(error);
       }
     }
     loadJobs();
-  }, []);
-  if (!jobs.length) return <p>loading...</p>;
-  const job = jobs.find((job) => job.jobId === id);
+  }, [id]);
 
   return (
     <main>
