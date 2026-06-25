@@ -12,6 +12,10 @@ export async function Ajax(url) {
 
 export const storeInLocalStorage = function (name, data) {
   localStorage.setItem(`${name}`, JSON.stringify(data));
+  localStorage.removeItem();
+};
+export const deleteFromLocalStorage = function (name) {
+  localStorage.removeItem(name);
 };
 export const getFromLocalStorage = function (name) {
   return JSON.parse(localStorage.getItem(`${name}`));
@@ -39,6 +43,5 @@ export const postJson = async function (url, body) {
     return data;
   } catch (error) {
     throw new Error(error);
-    ;
   }
 };

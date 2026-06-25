@@ -4,9 +4,11 @@ import { GrGoogle } from "react-icons/gr";
 import { LiaLinkedin } from "react-icons/lia";
 import { Link, useNavigate } from "react-router-dom";
 import { postJson } from "../helper";
+import { useAuth } from "../contexts";
 
 function SignIn() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
@@ -16,10 +18,11 @@ function SignIn() {
   };
   const handleSubmit = async function () {
     try {
-      await postJson("/api/auth/login", {
+      const authData = await postJson("/api/auth/login", {
         email: loginDetails.email,
         password: loginDetails.password,
       });
+      login(authData);
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
