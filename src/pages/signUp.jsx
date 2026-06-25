@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { postJson } from "../helper";
+import { useNavigate } from "react-router-dom";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,6 +38,7 @@ function SignUp() {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleSignUpDetailsInput = function (e, elName) {
     setSignUpDetails((prev) => ({ ...prev, [elName]: e.target.value }));
@@ -48,12 +51,24 @@ function SignUp() {
     }
   };
 
-  const handleSubmit = function (e) {
+  const handleSubmit = async function (e) {
     e.preventDefault();
     const nextErrors = validateSignUp(signUpDetails);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
       // proceed to next step
+      try {
+        const user = await postJson("/api/auth/register", {
+          fullName: signUpDetails.fullName,
+          email: signUpDetails.email.trim(),
+          password: signUpDetails.password,
+          role: "APPLICANT",
+        });
+        console.log("Registered:", user);
+        navigate("/sign-in");
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
   return (

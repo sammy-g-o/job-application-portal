@@ -23,3 +23,22 @@ export const formatCurrency = function (currency, amount) {
     currency: currency,
   }).format(amount);
 };
+
+export const postJson = async function (url, body) {
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok)
+      throw new Error(data.message || `Request failed (${res.status})`);
+    return data;
+  } catch (error) {
+    throw new Error(error);
+    ;
+  }
+};

@@ -2,15 +2,28 @@ import { useState } from "react";
 import { FaFacebook } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import { LiaLinkedin } from "react-icons/lia";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { postJson } from "../helper";
 
 function SignIn() {
+  const navigate = useNavigate();
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
   });
   const handleLoginDetailsInput = function (e, inputName) {
     setLoginDetails((prev) => ({ ...prev, [inputName]: e.target.value }));
+  };
+  const handleSubmit = async function () {
+    try {
+      await postJson("/api/auth/login", {
+        email: loginDetails.email,
+        password: loginDetails.password,
+      });
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <main className="pt-18 h-dvh">
@@ -23,7 +36,7 @@ function SignIn() {
             Continue your journey with the Emerald Executive network.
           </p>
         </div>
-        <form action="" className="flex flex-col gap-6">
+        <form action={handleSubmit} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label
               htmlFor="email"
