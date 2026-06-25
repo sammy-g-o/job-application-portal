@@ -12,7 +12,6 @@ export async function Ajax(url) {
 
 export const storeInLocalStorage = function (name, data) {
   localStorage.setItem(`${name}`, JSON.stringify(data));
-  localStorage.removeItem();
 };
 export const deleteFromLocalStorage = function (name) {
   localStorage.removeItem(name);
