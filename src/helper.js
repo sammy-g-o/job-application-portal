@@ -44,3 +44,37 @@ export const postJson = async function (url, body) {
     throw new Error(error);
   }
 };
+
+export function timeAgo(date) {
+  const diff = Date.now() - new Date(date).getTime();
+  const minute = 60 * 1000;
+  const hour = 60 * minute;
+  const day = 24 * hour;
+  const week = 7 * day;
+  const month = 30 * day;
+  const year = 365 * day;
+
+  if (diff < minute) return "Just Now";
+  if (diff < hour) {
+    const n = Math.floor(diff / minute);
+    return `${n} Minute${n === 1 ? "" : "s"} Ago`;
+  }
+  if (diff < day) {
+    const n = Math.floor(diff / hour);
+    return `${n} Hour${n === 1 ? "" : "s"} Ago`;
+  }
+  if (diff < week) {
+    const n = Math.floor(diff / day);
+    return `${n} Day${n === 1 ? "" : "s"} Ago`;
+  }
+  if (diff < month) {
+    const n = Math.floor(diff / week);
+    return `${n} Week${n === 1 ? "" : "s"} Ago`;
+  }
+  if (diff < year) {
+    const n = Math.floor(diff / month);
+    return `${n} Month${n === 1 ? "" : "s"} Ago`;
+  }
+  const n = Math.floor(diff / year);
+  return `${n} Year${n === 1 ? "" : "s"} Ago`;
+}
