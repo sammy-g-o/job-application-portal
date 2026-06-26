@@ -1,6 +1,6 @@
 import React from "react";
 import Bookmark from "./bookmark";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { formatCurrency } from "../helper";
 
 function timeAgo(date) {
@@ -43,13 +43,20 @@ function Job({ job }) {
   //   style: "currency",
   //   currency: job.currency,
   // });
+  const location = useLocation();
   return (
     <li>
       <article className="p-6 flex flex-col gap-6 rounded-2xl w-full bg-white shadow-card">
         <div className="flex justify-between">
           <img src={null} alt="" />
           <div className="">
-            <Link to={`/jobs/${job.jobId}`}>
+            <Link
+              to={
+                location.pathname !== "/saved"
+                  ? `/jobs/${job.jobId}`
+                  : `/saved/${job.jobId}`
+              }
+            >
               <h3 className="font-headline font-bold text-lg text-primary">
                 {job.jobTitle}
               </h3>

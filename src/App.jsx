@@ -66,6 +66,7 @@ function App() {
               <Route path="/" element={<LandingPage jobs={jobs} />} />
               <Route path="/dashboard" element={<UserDashboard />} />
               <Route path="/saved" element={<Bookmarked jobs={jobs} />} />
+              <Route path="/saved/:id" element={<JobDetails />} />
               <Route path="/jobs" element={<JobListing Jobs={jobs} />} />
               <Route path="/jobs/:id" element={<JobDetails />} />
             </Route>
